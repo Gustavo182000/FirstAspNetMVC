@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FirstAspNetMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstAspNetMVC.Data
 {
@@ -8,5 +9,7 @@ namespace FirstAspNetMVC.Data
         {
             
         }
+
+        public DbSet<EmprestimosModel> Emprestimos { get; set;}
     }
 }
