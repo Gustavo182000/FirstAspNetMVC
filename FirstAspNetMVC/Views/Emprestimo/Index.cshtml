@@ -1,30 +1,43 @@
 ﻿@model IEnumerable<EmprestimosModel>;
+@{
+    ViewData["title"] = "Empréstimos";
+}
 
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Recebedor</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">DataAtualizacao</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model != null)
-        {
-            @foreach(var emprestimo in Model)
+    <div class="container">
+      <div class="row">
+            <div class="col-9">
+                <h3>Empréstimos</h3>
+            </div>
+        <div class="col">
+            <a class="btn btn-success" asp-controller="Emprestimo" asp-action="Cadastrar" >Cadastrar novo empréstimo</a>
+        </div>
+      </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Recebedor</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">DataAtualizacao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
             {
-                <tr>
-                    <td>@emprestimo.Recebedor</td>
-                    <td>@emprestimo.Fornecedor</td>
-                    <td>@emprestimo.Titulo</td>
-                    <td>@emprestimo.DataAtualizacao</td>
-                </tr>
+                @foreach (var emprestimo in Model)
+                {
+                    <tr>
+                        <td>@emprestimo.Recebedor</td>
+                        <td>@emprestimo.Fornecedor</td>
+                        <td>@emprestimo.Titulo</td>
+                        <td>@emprestimo.DataAtualizacao</td>
+                    </tr>
+                }
             }
-        }
-      
 
-       
-    </tbody>
-</table>
+
+
+        </tbody>
+    </table>
+    </div>
+

@@ -17,5 +17,20 @@ namespace FirstAspNetMVC.Controllers
 
             return View(emprestimos);
         }
+        public IActionResult Cadastrar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Cadastrar(EmprestimosModel emprestimo)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Emprestimos.Add(emprestimo);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Cadastrar");
+        }
     }
 }
