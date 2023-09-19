@@ -11,6 +11,8 @@ namespace FirstAspNetMVC.Models
 
         [Required(ErrorMessage = "É obrigatório informar o Fornecedor")]
         public string Fornecedor { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar o Titulo")]
         public string Titulo { get; set; }
         public DateTime DataAtualizacao { get; set; } = DateTime.Now;
     }

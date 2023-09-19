@@ -1,0 +1,42 @@
+﻿@model EmprestimosModel
+@{
+    ViewData["title"] = "Editar Empréstimo";
+}
+
+<div class="container border rounded">
+    <div class="row mt-2">
+        <div class="col">
+            <a class="btn btn-primary" asp-controller="Emprestimo" asp-action="Index">Voltar</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <h3>Editar empréstimo</h3>
+        </div>
+    </div>
+    <form method="post" asp-controller="Emprestimo" asp-action="Editar">
+        <div class="row mt-3">
+            <div class="col">
+                <span>Recebedor:</span>
+                <input type="text" class="form-control" asp-for="Recebedor" id="Recebidor" />
+                <span asp-validation-for="Recebedor" class="text-danger"></span>
+
+            </div>
+            <div class="col">
+                <span>Fornecedor:</span>
+                <input type="text" class="form-control" asp-for="Fornecedor" id="Fornecedor" />
+                <span asp-validation-for="Fornecedor" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <span>Titulo:</span>
+                <input type="text" class="form-control" asp-for="Titulo" id="Titulo" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+    </form>
+</div>
