@@ -1,0 +1,31 @@
+﻿@model EmprestimosModel
+
+<div class="container border rounded">
+    <a class="btn btn-primary mt-2" asp-controller="Emprestimo" asp-action="Index">Voltar</a>
+    <form method="post" asp-controller="Emprestimo" asp-action="Excluir">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Recebedor</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">DataAtualizacao</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+             <tr>
+                <td>@Model.Recebedor</td>
+                <td>@Model.Fornecedor</td>
+                <td>@Model.Titulo</td>
+                <td>@Model.DataAtualizacao</td>
+                        
+             </tr>
+        </tbody>
+    </table>
+    <div class="row p-3">
+            <button class="btn btn-danger" type="submit">Confirmar Exclusão</button>
+    </div>
+    </form>
+</div>

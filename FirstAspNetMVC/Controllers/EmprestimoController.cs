@@ -1,6 +1,7 @@
 ﻿using FirstAspNetMVC.Data;
 using FirstAspNetMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstAspNetMVC.Controllers
 {
@@ -37,6 +38,36 @@ namespace FirstAspNetMVC.Controllers
             }
             return View(emprestimo);
         }
+        [HttpGet]
+        public IActionResult Excluir(int id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            EmprestimosModel emprestimo = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
+
+            if (emprestimo == null)
+            {
+                return NotFound();
+            }
+            return View(emprestimo);
+        }
+        [HttpPost]
+        public IActionResult Excluir(EmprestimosModel emprestimo)
+        {
+            if (emprestimo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Emprestimos.Remove(emprestimo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+
+
+        }
         [HttpPost]
         public IActionResult Editar(EmprestimosModel emprestimo)
         {
@@ -44,9 +75,8 @@ namespace FirstAspNetMVC.Controllers
             {
                 _context.Emprestimos.Update(emprestimo);
                 _context.SaveChanges();
-                IEnumerable<EmprestimosModel> emprestimos = _context.Emprestimos;
 
-                return View("Index", emprestimos);
+                return RedirectToAction("Index");
 
             }
 
