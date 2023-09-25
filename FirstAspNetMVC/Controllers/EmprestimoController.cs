@@ -58,11 +58,14 @@ namespace FirstAspNetMVC.Controllers
         {
             if (emprestimo == null)
             {
+                TempData["MensagemErro"] = "Erro ao excluir cadatro !";
+
                 return NotFound();
             }
 
             _context.Emprestimos.Remove(emprestimo);
             _context.SaveChanges();
+            TempData["MensagemSucesso"] = "Cadastro excluido com sucesso !";
 
             return RedirectToAction("Index");
 
@@ -75,12 +78,12 @@ namespace FirstAspNetMVC.Controllers
             {
                 _context.Emprestimos.Update(emprestimo);
                 _context.SaveChanges();
-
+                TempData["MensagemSucesso"] = "Cadastro editado com sucesso !";
                 return RedirectToAction("Index");
 
             }
 
-
+            TempData["MensagemErro"] = "Erro ao editar cadatro !";
             return View(emprestimo);
 
         }
@@ -92,8 +95,11 @@ namespace FirstAspNetMVC.Controllers
             {
                 _context.Emprestimos.Add(emprestimo);
                 _context.SaveChanges();
+                TempData["MensagemSucesso"] = "Cadastro adicionado com sucesso !";
                 return RedirectToAction("Index");
             }
+            TempData["MensagemErro"] = "Erro ao adiiconar cadatro !";
+
             return View("Cadastrar");
         }
     }
